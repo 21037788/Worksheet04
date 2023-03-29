@@ -1,4 +1,4 @@
-import GridViewer
+import Viewer
 
 EMPTY = 0
 WALL = 1
@@ -23,7 +23,7 @@ if __name__ == "__main__":
         [ WALL,  EMPTY,  WALL,  WALL,  WALL,  WALL,  WALL,  WALL,  WALL, WALL],
     ]
                     
-    GridViewer.view(grid)
+    Viewer.view(grid)
 
 
     print("Find a solution to get from ^^ to $$, using the characters " 
@@ -66,14 +66,15 @@ if __name__ == "__main__":
             print("You faik into the chasm of done") # Out of bounds.
             
         else:
-            if grid[currentRow][currentCol] == EMPTY:
-                grid[currentRow][currentCol] = VISITED
+            cell = grid[currentRow][currentCol]
+            if cell== EMPTY:
+                cell = VISITED
                 
-            elif grid[currentRow][currentCol] == WALL:
+            elif cell == WALL:
                 done = True
                 print("You stumble blindly into a solid concrete wall") # Hit wall.
 
-            elif grid[currentRow][currentCol] == END:
+            elif cell == END:
                 done = True
                 solved = True
                 print("SOLVED!") # Solved.
@@ -88,4 +89,4 @@ if __name__ == "__main__":
     if not solved:
         print("You have failed to escape. Future archeologists gaze upon your remains in bafflement") # Did not reach the end.
 
-    GridViewer.view(grid)
+    Viewer.view(grid)
